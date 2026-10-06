@@ -6,15 +6,15 @@ public class Module : MonoBehaviour
     public string type;
     public float damage;
     public float aps;
-    public float progress;
     public float level;
     public float startingAmo;
-    public float amo;
     public float reloadTime;
+    
+    public float amo;
     public float reloadProgress;
     public bool reloading;
     public bool on = true;
-
+    public float progress;
     public string myName;
 
     public GameObject missile;

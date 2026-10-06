@@ -11,6 +11,15 @@ public class ModuleUpgrade : MonoBehaviour, IPointerClickHandler
     public TMP_Text fireRate;
     public TMP_Text upgradeCost;
 
+    public float[] damageUp;
+    public float[] amoUp;
+    public float[] fireRateUp;
+    public float[] upgradeCostUp;
+
+    public float UpgradeCount = 0f;
+
+    public GameObject upgradeButton;
+
     public float cost;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +36,7 @@ public class ModuleUpgrade : MonoBehaviour, IPointerClickHandler
      public void OnPointerClick(PointerEventData eventData)
     {
         print("clicked");
+        upgradeButton.GetComponent<ModUpgradeButton>().myMod = gameObject;
         weaponName.text = "" + gameObject.GetComponent<Module>().myName;
         level.text = "Level: " + gameObject.GetComponent<Module>().level;
         damage.text = "Damage: " + gameObject.GetComponent<Module>().damage;

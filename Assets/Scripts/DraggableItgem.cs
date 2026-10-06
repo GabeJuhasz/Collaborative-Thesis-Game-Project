@@ -8,12 +8,21 @@ public class DraggableItgem : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 {
     public Image image;
     [HideInInspector] public Transform parentAfterDrag;
+
+    public ShipModTracker tracker;
     public void OnBeginDrag(PointerEventData eventData)
-    {
+    {        
+        if (transform.parent.GetComponent<InvnetorySlot>().shipSlot == true)
+        {
+            tracker.shipmods[transform.parent.GetComponent<InvnetorySlot>().slotNum] = null;
+        }
+        
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         image.raycastTarget = false;
+
+
     }
 
     public void OnDrag(PointerEventData eventData)

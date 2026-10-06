@@ -3,6 +3,8 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour
 {
     public float hp;
+
+    public float damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
