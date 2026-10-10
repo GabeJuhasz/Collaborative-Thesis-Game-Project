@@ -16,6 +16,11 @@ public class DraggableItgem : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         {
             tracker.shipmods[transform.parent.GetComponent<InvnetorySlot>().slotNum] = null;
         }
+
+        if (transform.parent.GetComponent<InvnetorySlot>().inventorySlot == true)
+        {
+            InventoryManager.slots[transform.parent.GetComponent<InvnetorySlot>().slotNum - 1] = false;
+        }
         
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);

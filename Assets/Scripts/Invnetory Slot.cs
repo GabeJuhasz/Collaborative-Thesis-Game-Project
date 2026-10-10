@@ -5,6 +5,7 @@ public class InvnetorySlot : MonoBehaviour, IDropHandler
 {
 
 public bool shipSlot;
+public bool inventorySlot;
 public int slotNum;
 
 public GameObject mod;
@@ -24,6 +25,11 @@ public void OnDrop(PointerEventData eventData)
         if (shipSlot)
         {
            tracker.shipmods[slotNum] = dropped; 
+        }
+
+        if (inventorySlot)
+        {
+            InventoryManager.slots[slotNum - 1] = true;
         }
 
     }
