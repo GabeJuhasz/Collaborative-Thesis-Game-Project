@@ -19,4 +19,9 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Level 1");
     }
+
+    public void BackToInventory()
+    {
+        SceneManager.LoadScene("Inventory");
+    }
 }

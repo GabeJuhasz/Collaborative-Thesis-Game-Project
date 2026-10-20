@@ -31,7 +31,7 @@ public class Missile : MonoBehaviour
             }
         }
 
-        print(target.name);
+        //print(target.name);
 
     }
 

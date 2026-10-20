@@ -25,6 +25,11 @@ public class Module : MonoBehaviour
         
     }
 
+    void Awake()
+    {
+        //DontDestroyOnLoad(gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -33,7 +38,7 @@ public class Module : MonoBehaviour
            progress += Time.deltaTime;
             if (type == "Missile")
             {
-                if (progress > aps)
+                if (progress > 1/aps)
                 {
                     progress = 0f;
                     Vector3 spawnPosition = transform.parent.position;
@@ -44,7 +49,7 @@ public class Module : MonoBehaviour
 
             if (type == "Bullet" && !reloading)
             {
-                if (progress > aps)
+                if (progress > 1/aps)
                 {
                     progress = 0f;
                     Vector3 spawnPosition = transform.parent.position;

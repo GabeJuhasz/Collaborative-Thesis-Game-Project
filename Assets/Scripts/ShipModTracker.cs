@@ -141,18 +141,18 @@ public class ShipModTracker : MonoBehaviour
     {
         for (int i = 0; i < shipmods.Length;i++)
         {
-                print(i);
+                //print(i);
                 
                 if (i == 0)
                 {
                     if(type0 != "")
                 {
-                    print(type0);
-                    print(type1);
-                    print(type2);
-                    print(type3);
-                    print(type4);
-                    print(type5);
+                    //print(type0);
+                    //print(type1);
+                    //print(type2);
+                    //print(type3);
+                    //print(type4);
+                    //print(type5);
                     Vector3 spawnPosition = slot1.transform.position;
                     if (type0 == "Bullet")
                     {
