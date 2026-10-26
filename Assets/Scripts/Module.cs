@@ -19,6 +19,19 @@ public class Module : MonoBehaviour
 
     public GameObject missile;
     public GameObject bullet;
+
+    public float damageAugment;
+    public float amoAugment;
+    public float fireRateAugment;
+    public float upgradeCostAugment;
+
+    public float maxLv;
+
+    public int slotNum;
+
+    public string rarity;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -79,5 +92,25 @@ public class Module : MonoBehaviour
                 
             } 
         }
+    }
+
+    public void RefreshStatHolder()
+    {
+        AllModStatsHolder.type[slotNum] = type;
+        AllModStatsHolder.damage[slotNum] = damage;
+        AllModStatsHolder.aps[slotNum] = aps;
+        AllModStatsHolder.level[slotNum] = level;
+        AllModStatsHolder.reloadTime[slotNum] = reloadTime;
+        AllModStatsHolder.amo[slotNum] = amo;
+        AllModStatsHolder.myName[slotNum] = myName;
+        AllModStatsHolder.upgradeCost[slotNum] = this.gameObject.GetComponent<ModuleUpgrade>().cost;
+        AllModStatsHolder.startingAmo[slotNum] = startingAmo;
+
+        AllModStatsHolder.damageUp[slotNum] = damageAugment;
+        AllModStatsHolder.amoUp[slotNum] = amoAugment;
+        AllModStatsHolder.fireRateUp[slotNum] = fireRateAugment;
+        AllModStatsHolder.upgradeCostUp[slotNum] = upgradeCostAugment;
+
+        AllModStatsHolder.maxLv[slotNum] = maxLv;
     }
 }

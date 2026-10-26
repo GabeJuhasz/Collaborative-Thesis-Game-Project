@@ -10,8 +10,11 @@ public class DraggableItgem : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [HideInInspector] public Transform parentAfterDrag;
 
     public ShipModTracker tracker;
+
+    public GameObject mod;
     public void OnBeginDrag(PointerEventData eventData)
     {        
+        mod = eventData.pointerDrag;
         if (transform.parent.GetComponent<InvnetorySlot>().shipSlot == true)
         {
             tracker.shipmods[transform.parent.GetComponent<InvnetorySlot>().slotNum] = null;

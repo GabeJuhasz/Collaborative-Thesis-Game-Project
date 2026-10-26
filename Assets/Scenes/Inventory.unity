@@ -237,7 +237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9166828951550482778, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
       propertyPath: slotNum
-      value: 3
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 9166828951550482778, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
       propertyPath: tracker
@@ -329,6 +329,13 @@ MonoBehaviour:
   myName: Machine Gun
   missile: {fileID: 0}
   bullet: {fileID: 0}
+  damageAugment: 0
+  amoAugment: 0
+  fireRateAugment: 0
+  upgradeCostAugment: 0
+  maxLv: 0
+  slotNum: 0
+  rarity: 
 --- !u!114 &22805914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +351,7 @@ MonoBehaviour:
   image: {fileID: 22805915}
   parentAfterDrag: {fileID: 0}
   tracker: {fileID: 512782559}
+  mod: {fileID: 0}
 --- !u!114 &22805915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1743,6 +1751,7 @@ MonoBehaviour:
   image: {fileID: 467408054}
   parentAfterDrag: {fileID: 0}
   tracker: {fileID: 512782559}
+  mod: {fileID: 0}
 --- !u!114 &467408054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1807,6 +1816,13 @@ MonoBehaviour:
   myName: Machine Gun
   missile: {fileID: 0}
   bullet: {fileID: 0}
+  damageAugment: 0
+  amoAugment: 0
+  fireRateAugment: 0
+  upgradeCostAugment: 0
+  maxLv: 0
+  slotNum: 0
+  rarity: 
 --- !u!114 &467408057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1907,6 +1923,7 @@ MonoBehaviour:
   image: {fileID: 468268116}
   parentAfterDrag: {fileID: 0}
   tracker: {fileID: 512782559}
+  mod: {fileID: 0}
 --- !u!114 &468268116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1971,6 +1988,13 @@ MonoBehaviour:
   myName: Missile Launcher
   missile: {fileID: 0}
   bullet: {fileID: 0}
+  damageAugment: 0
+  amoAugment: 0
+  fireRateAugment: 0
+  upgradeCostAugment: 0
+  maxLv: 0
+  slotNum: 0
+  rarity: 
 --- !u!114 &468268119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2439,6 +2463,7 @@ GameObject:
   - component: {fileID: 512782560}
   - component: {fileID: 512782559}
   - component: {fileID: 512782561}
+  - component: {fileID: 512782562}
   m_Layer: 0
   m_Name: ModTracker
   m_TagString: Untagged
@@ -2453,7 +2478,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512782558}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0a2638faeb36de40981439b732851e5, type: 3}
   m_Name: 
@@ -2554,6 +2579,18 @@ MonoBehaviour:
   epicMissile: {fileID: 21300000, guid: 6b33e638ef3f7f24daae1933ba97e309, type: 3}
   legendaryMissile: {fileID: 21300000, guid: 73d7bc72d63f42d49adf589e08e4e946, type: 3}
   upgradeButton: {fileID: 1840558516}
+--- !u!114 &512782562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512782558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0421affee33b44b4bb07267e94e9766a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &515292340
 GameObject:
   m_ObjectHideFlags: 0
@@ -3125,6 +3162,13 @@ MonoBehaviour:
   myName: Machine Gun
   missile: {fileID: 0}
   bullet: {fileID: 0}
+  damageAugment: 0
+  amoAugment: 0
+  fireRateAugment: 0
+  upgradeCostAugment: 0
+  maxLv: 0
+  slotNum: 0
+  rarity: 
 --- !u!114 &702245656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3140,6 +3184,7 @@ MonoBehaviour:
   image: {fileID: 702245657}
   parentAfterDrag: {fileID: 0}
   tracker: {fileID: 512782559}
+  mod: {fileID: 0}
 --- !u!114 &702245657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3452,7 +3497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9166828951550482778, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
       propertyPath: slotNum
-      value: 5
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 9166828951550482778, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
       propertyPath: tracker
@@ -3871,7 +3916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9166828951550482778, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
       propertyPath: slotNum
-      value: 2
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 9166828951550482778, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
       propertyPath: tracker
@@ -4598,7 +4643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9166828951550482778, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
       propertyPath: slotNum
-      value: 1
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 9166828951550482778, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
       propertyPath: tracker
@@ -6967,6 +7012,13 @@ MonoBehaviour:
   myName: Machine Gun
   missile: {fileID: 0}
   bullet: {fileID: 0}
+  damageAugment: 0
+  amoAugment: 0
+  fireRateAugment: 0
+  upgradeCostAugment: 0
+  maxLv: 0
+  slotNum: 0
+  rarity: 
 --- !u!114 &1688723298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6982,6 +7034,7 @@ MonoBehaviour:
   image: {fileID: 1688723299}
   parentAfterDrag: {fileID: 0}
   tracker: {fileID: 512782559}
+  mod: {fileID: 0}
 --- !u!114 &1688723299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7313,7 +7366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9166828951550482778, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
       propertyPath: slotNum
-      value: 4
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 9166828951550482778, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
       propertyPath: tracker
@@ -7530,6 +7583,13 @@ MonoBehaviour:
   myName: Missile Launcher
   missile: {fileID: 0}
   bullet: {fileID: 0}
+  damageAugment: 0
+  amoAugment: 0
+  fireRateAugment: 0
+  upgradeCostAugment: 0
+  maxLv: 0
+  slotNum: 0
+  rarity: 
 --- !u!114 &1801476773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7545,6 +7605,7 @@ MonoBehaviour:
   image: {fileID: 1801476774}
   parentAfterDrag: {fileID: 0}
   tracker: {fileID: 512782559}
+  mod: {fileID: 0}
 --- !u!114 &1801476774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9260,6 +9321,10 @@ PrefabInstance:
     - target: {fileID: 6994146566157540584, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166828951550482778, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
+      propertyPath: slotNum
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 9166828951550482778, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
       propertyPath: tracker

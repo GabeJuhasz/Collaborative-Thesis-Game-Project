@@ -1,6 +1,7 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
@@ -37,8 +38,7 @@ public class InventoryManager : MonoBehaviour
     {
         modTracker = GameObject.Find("ModTracker").GetComponent<ShipModTracker>();
 
-        if (EnemyDropMod.itemsToAddC > 0)
-        {
+        
             for (int i = 0; i < EnemyDropMod.itemsToAddC; i++)
             {
                 EnemyDropMod.itemsToAddC--;
@@ -62,7 +62,18 @@ public class InventoryManager : MonoBehaviour
                 EnemyDropMod.itemsToAddC--;
                 MakeNewMod("l");
             }
+
+        if (SceneManager.GetActiveScene().name == "Inventory")
+        {
+            for (int i = 0; i < slots.Length;i++)
+            {
+                if (slots[i] == true)
+                {
+                    ReloadMod(i);
+                }
+            }
         }
+
     }
 
     // Update is called once per frame
@@ -107,6 +118,96 @@ public class InventoryManager : MonoBehaviour
             }     
         }
         return 0;
+    }
+
+    public void ReloadMod(int i)
+    {
+        GameObject mod = Instantiate(blankMod);
+        mod.transform.SetParent(ObjectSlots[i].transform);
+
+        mod.GetOrAddComponent<DraggableItgem>().tracker = modTracker;
+        mod.GetComponent<ModuleUpgrade>().weaponName = weaponNameText;
+        mod.GetComponent<ModuleUpgrade>().level = levelText;
+        mod.GetComponent<ModuleUpgrade>().damage = damageText;
+        mod.GetComponent<ModuleUpgrade>().amo = amoText;
+        mod.GetComponent<ModuleUpgrade>().fireRate = fireRateText;
+        mod.GetComponent<ModuleUpgrade>().upgradeCost = upgradeCostText;
+        mod.GetComponent<Module>().maxLv = 3;
+
+        mod.GetComponent<Module>().myName = AllModStatsHolder.myName[i];
+        mod.GetComponent<Module>().type = AllModStatsHolder.type[i];
+        mod.GetComponent<Module>().damage = AllModStatsHolder.damage[i];
+        mod.GetComponent<Module>().aps = AllModStatsHolder.aps[i];
+        mod.GetComponent<Module>().level = AllModStatsHolder.level[i];
+        mod.GetComponent<Module>().reloadTime = AllModStatsHolder.reloadTime[i];
+        mod.GetComponent<Module>().amo = AllModStatsHolder.amo[i];
+        mod.GetComponent<Module>().myName = AllModStatsHolder.myName[i];
+        mod.GetComponent<ModuleUpgrade>().cost = AllModStatsHolder.upgradeCost[i];
+        mod.GetComponent<Module>().startingAmo = AllModStatsHolder.startingAmo[i];
+
+        mod.GetComponent<Module>().damageAugment = AllModStatsHolder.damageUp[i];
+        mod.GetComponent<Module>().amoAugment = AllModStatsHolder.amoUp[i];
+        mod.GetComponent<Module>().fireRateAugment = AllModStatsHolder.fireRateUp[i];
+        mod.GetComponent<Module>().upgradeCostAugment = AllModStatsHolder.upgradeCostUp[i];
+
+        mod.GetComponent<Module>().maxLv = AllModStatsHolder.maxLv[i];
+        mod.GetComponent<Module>().slotNum = i;
+
+        mod.GetComponent<ModuleUpgrade>().upgradeButton = upgradeButton;
+       
+
+
+        if (mod.GetComponent<Module>().rarity == "l")
+        {
+            if (mod.GetComponent<Module>().type == "Missile")
+            {
+                mod.GetComponent<Image>().sprite = legendaryMissile;
+            }
+
+            if (mod.GetComponent<Module>().type == "Bullet")
+            {
+                mod.GetComponent<Image>().sprite = legendaryBullet;
+            }
+        }
+
+        if (mod.GetComponent<Module>().rarity == "e")
+        {
+            if (mod.GetComponent<Module>().type == "Missile")
+            {
+                mod.GetComponent<Image>().sprite = epicMissile;
+            }
+
+            if (mod.GetComponent<Module>().type == "Bullet")
+            {
+                mod.GetComponent<Image>().sprite = epicBullet;
+            }
+        }
+
+        if (mod.GetComponent<Module>().rarity == "r")
+        {
+            if (mod.GetComponent<Module>().type == "Bullet")
+            {
+                mod.GetComponent<Image>().sprite = rareBullet;
+            }
+
+            if (mod.GetComponent<Module>().type == "Missile")
+            {
+                mod.GetComponent<Image>().sprite = rareMissile;
+            }
+        }
+
+        if (mod.GetComponent<Module>().rarity == "c")
+        {
+            if (mod.GetComponent<Module>().type == "Bullet")
+            {
+                mod.GetComponent<Image>().sprite = commonBullet;
+            }
+
+            if (mod.GetComponent<Module>().type == "Missile")
+            {
+                mod.GetComponent<Image>().sprite = commonMissile;
+            }
+        }
     }
 
     public void MakeNewMod(string rarity)
@@ -157,6 +258,7 @@ public class InventoryManager : MonoBehaviour
         mod.GetComponent<ModuleUpgrade>().amo = amoText;
         mod.GetComponent<ModuleUpgrade>().fireRate = fireRateText;
         mod.GetComponent<ModuleUpgrade>().upgradeCost = upgradeCostText;
+        mod.GetComponent<Module>().maxLv = 3;
 
         float startingDamageUp = 0f;
         float startingAmoUp = 0f;
@@ -169,10 +271,10 @@ public class InventoryManager : MonoBehaviour
         float upgradeCostAugment = 0f;
         if (rarity == "c")
         {
-            damageAugment = 1.1f;
-            amoAugment = 1.25f;
-            fireRateAugment = 1.1f;
-            upgradeCostAugment = 1.25f;
+            mod.GetComponent<Module>().damageAugment = 1.1f;
+            mod.GetComponent<Module>().amoAugment = 1.25f;
+            mod.GetComponent<Module>().fireRateAugment = 1.1f;
+            mod.GetComponent<Module>().upgradeCostAugment = 1.25f;
 
             startingDamageUp = damage;
             startingAmoUp = amo;
@@ -192,10 +294,10 @@ public class InventoryManager : MonoBehaviour
         }
         if (rarity == "r")
         {
-            damageAugment = 1.25f;
-            amoAugment = 1.5f;
-            fireRateAugment = 1.2f;
-            upgradeCostAugment = 1.35f;
+            mod.GetComponent<Module>().damageAugment = 1.25f;
+            mod.GetComponent<Module>().amoAugment = 1.5f;
+            mod.GetComponent<Module>().fireRateAugment = 1.2f;
+            mod.GetComponent<Module>().upgradeCostAugment = 1.35f;
 
             int randUp = Random.Range(0,3);
             startingDamageUp = damage + randUp;
@@ -216,10 +318,10 @@ public class InventoryManager : MonoBehaviour
         }
         if (rarity == "e")
         {
-            damageAugment = 1.35f;
-            amoAugment = 2f;
-            fireRateAugment = 1.35f;
-            upgradeCostAugment = 1.4f;
+            mod.GetComponent<Module>().damageAugment = 1.35f;
+            mod.GetComponent<Module>().amoAugment = 2f;
+            mod.GetComponent<Module>().fireRateAugment = 1.35f;
+            mod.GetComponent<Module>().upgradeCostAugment = 1.4f;
 
             int randUp = Random.Range(3,5);
             startingDamageUp = damage + randUp;
@@ -240,10 +342,10 @@ public class InventoryManager : MonoBehaviour
         }
         if (rarity == "l")
         {
-            damageAugment = 1.5f;
-            amoAugment = 2.5f;
-            fireRateAugment = 1.5f;
-            upgradeCostAugment = 1.5f;
+            mod.GetComponent<Module>().damageAugment = 1.5f;
+            mod.GetComponent<Module>().amoAugment = 2.5f;
+            mod.GetComponent<Module>().fireRateAugment = 1.5f;
+            mod.GetComponent<Module>().upgradeCostAugment = 1.5f;
 
             int randUp = Random.Range(5,10);
             startingDamageUp = damage + randUp;
@@ -262,36 +364,42 @@ public class InventoryManager : MonoBehaviour
             }
            
         }
-        mod.GetComponent<ModuleUpgrade>().damageUp[0] = startingDamageUp;
-        mod.GetComponent<ModuleUpgrade>().damageUp[1] = startingDamageUp * (damageAugment * 1);
-        mod.GetComponent<ModuleUpgrade>().damageUp[2] = startingDamageUp * (damageAugment * 2);
-        mod.GetComponent<ModuleUpgrade>().damageUp[3] = startingDamageUp * (damageAugment * 3);
-        mod.GetComponent<ModuleUpgrade>().damageUp[4] = startingDamageUp * (damageAugment * 4);
 
-        mod.GetComponent<ModuleUpgrade>().amoUp[0] = startingAmoUp;
-        mod.GetComponent<ModuleUpgrade>().amoUp[1] = startingAmoUp * (amoAugment * 1);
-        mod.GetComponent<ModuleUpgrade>().amoUp[2] = startingAmoUp * (amoAugment * 2);
-        mod.GetComponent<ModuleUpgrade>().amoUp[3] = startingAmoUp * (amoAugment * 3);
-        mod.GetComponent<ModuleUpgrade>().amoUp[4] = startingAmoUp * (amoAugment * 4);
-
-        mod.GetComponent<ModuleUpgrade>().fireRateUp[0] = startingfireRateUp;
-        mod.GetComponent<ModuleUpgrade>().fireRateUp[1] = startingfireRateUp * (fireRateAugment * 1);
-        mod.GetComponent<ModuleUpgrade>().fireRateUp[2] = startingfireRateUp * (fireRateAugment * 2);
-        mod.GetComponent<ModuleUpgrade>().fireRateUp[3] = startingfireRateUp * (fireRateAugment * 3);
-        mod.GetComponent<ModuleUpgrade>().fireRateUp[4] = startingfireRateUp * (fireRateAugment * 4);
-
-        mod.GetComponent<ModuleUpgrade>().upgradeCostUp[0] = startingupgradeCostUp;
-        mod.GetComponent<ModuleUpgrade>().upgradeCostUp[1] = startingupgradeCostUp * (upgradeCostAugment * 1);
-        mod.GetComponent<ModuleUpgrade>().upgradeCostUp[2] = startingupgradeCostUp * (upgradeCostAugment * 2);
-        mod.GetComponent<ModuleUpgrade>().upgradeCostUp[3] = startingupgradeCostUp * (upgradeCostAugment * 3);
-        mod.GetComponent<ModuleUpgrade>().upgradeCostUp[4] = startingupgradeCostUp * (upgradeCostAugment * 4);
+        mod.GetComponent<Module>().damage = startingDamageUp;
+        mod.GetComponent<Module>().amo = startingAmoUp;
+        mod.GetComponent<Module>().aps = startingfireRateUp;
+        mod.GetComponent<ModuleUpgrade>().cost = startingupgradeCostUp;
 
         mod.GetComponent<ModuleUpgrade>().upgradeButton = upgradeButton;
 
         mod.GetComponent<ModuleUpgrade>().cost = startingupgradeCostUp;
+        
+        mod.GetComponent<Module>().rarity = rarity;
 
         mod.transform.SetParent(ObjectSlots[FindFirstEmpty() - 1].transform);
         slots[FindFirstEmpty()-1] = true;
+
+        AllModStatsHolder.type[FindFirstEmpty() - 1] = mod.GetComponent<Module>().type;
+        AllModStatsHolder.damage[FindFirstEmpty() - 1] = mod.GetComponent<Module>().damage;
+        AllModStatsHolder.aps[FindFirstEmpty() - 1] = mod.GetComponent<Module>().aps;
+        AllModStatsHolder.level[FindFirstEmpty() - 1] = mod.GetComponent<Module>().level;
+        AllModStatsHolder.reloadTime[FindFirstEmpty() - 1] = mod.GetComponent<Module>().reloadTime;
+        AllModStatsHolder.amo[FindFirstEmpty() - 1] = mod.GetComponent<Module>().amo;
+        AllModStatsHolder.myName[FindFirstEmpty() - 1] = mod.GetComponent<Module>().myName;
+        AllModStatsHolder.upgradeCost[FindFirstEmpty() - 1] = mod.GetComponent<ModuleUpgrade>().cost;
+        AllModStatsHolder.startingAmo[FindFirstEmpty() - 1] = mod.GetComponent<Module>().startingAmo;
+
+        AllModStatsHolder.damageUp[FindFirstEmpty() - 1] = mod.GetComponent<Module>().damageAugment;
+        AllModStatsHolder.amoUp[FindFirstEmpty() - 1] = mod.GetComponent<Module>().amoAugment;
+        AllModStatsHolder.fireRateUp[FindFirstEmpty() - 1] = mod.GetComponent<Module>().fireRateAugment;
+        AllModStatsHolder.upgradeCostUp[FindFirstEmpty() - 1] = mod.GetComponent<Module>().upgradeCostAugment;
+
+        AllModStatsHolder.maxLv[FindFirstEmpty() - 1] = mod.GetComponent<Module>().maxLv;
+        AllModStatsHolder.slotNum[FindFirstEmpty() - 1] = FindFirstEmpty() - 1;
+
+        AllModStatsHolder.rarity[FindFirstEmpty() - 1] = rarity;
+
+
 
     }
 }
