@@ -29,6 +29,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Upgrade Ship Hub.unity
     guid: c72738a76e48f9b4bbe5e68f798a50cb
+  - enabled: 1
+    path: Assets/Scenes/pi/main menu/mainmenu.unity
+    guid: da3f78e3610b481469179f6efd45223c
+  - enabled: 1
+    path: Assets/Scenes/pi/Level forest/Forest level.unity
+    guid: 00929f88d96f708468b6eedb00a5a810
+  - enabled: 1
+    path: Assets/Scenes/pi/boss level/boss planet.unity
+    guid: e2b56f0d0cbef6044af133f602594493
+  - enabled: 1
+    path: Assets/Scenes/pi/Desert level 1/Desert level.unity
+    guid: 3469d5298e379fe45956d0c068d17861
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0
