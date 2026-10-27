@@ -23,6 +23,8 @@ public class EnemyDropMod : MonoBehaviour
 
     public InventoryManager iM;
 
+    public static int totalItems;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,7 +40,7 @@ public class EnemyDropMod : MonoBehaviour
     public void DropItem()
     {
         string rarity = "c";
-       if( iM.FindFirstEmpty() == 0)
+       if( totalItems >= 30)
         {
             DisplayFullMessage();
         }
@@ -54,32 +56,47 @@ public class EnemyDropMod : MonoBehaviour
             {
                 itemsToAddC ++;
                 rarity = "c";
-                InventoryManager.slots[iM.FindFirstEmpty() - 1] = true;
+                //InventoryManager.slots[iM.FindFirstEmpty() - 1] = true;
+                totalItems++;
+
+                print("Dropped 1 rarity " + rarity + " rarity item.");
+                DisplayItemGot(rarity);
             }
             
             if (dropChance < 85f && dropChance > 60)
             {
                 itemsToAddR ++;
                 rarity = "r";
-                InventoryManager.slots[iM.FindFirstEmpty() - 1] = true;
+                //InventoryManager.slots[iM.FindFirstEmpty() - 1] = true;
+                totalItems++;
+
+                print("Dropped 1 rarity " + rarity + " rarity item.");
+                DisplayItemGot(rarity);
             }
             
             if (dropChance < 90f && dropChance > 85)
             {
                 itemsToAddE ++;
                 rarity = "e";
-                InventoryManager.slots[iM.FindFirstEmpty() - 1] = true;
+                //InventoryManager.slots[iM.FindFirstEmpty() - 1] = true;
+                totalItems++;
+
+                print("Dropped 1 rarity " + rarity + " rarity item.");
+                DisplayItemGot(rarity);
             }
             
             if (dropChance < 100f && dropChance > 98f)
             {
                 itemsToAddL ++;
                 rarity = "l";
-                InventoryManager.slots[iM.FindFirstEmpty() - 1] = true;
+                //InventoryManager.slots[iM.FindFirstEmpty() - 1] = true;
+                totalItems++;
+                
+                print("Dropped 1 rarity " + rarity + " rarity item.");
+                DisplayItemGot(rarity);
             }
             
-            print(iM.FindFirstEmpty() - 1);
-            DisplayItemGot(rarity);
+            
         }
     }
 

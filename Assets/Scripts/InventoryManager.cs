@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static bool[] slots = new bool[35] {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false};
+    public static bool[] slots = new bool[41] {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false};
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
     public GameObject[] ObjectSlots;
@@ -37,42 +37,67 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         modTracker = GameObject.Find("ModTracker").GetComponent<ShipModTracker>();
-
         
-            for (int i = 0; i < EnemyDropMod.itemsToAddC; i++)
+            if (SceneManager.GetActiveScene().name == "Inventory")
             {
-                EnemyDropMod.itemsToAddC--;
-                MakeNewMod("c");
-            }
-            
-            for (int i = 0; i < EnemyDropMod.itemsToAddR; i++)
-            {
-                EnemyDropMod.itemsToAddC--;
-                MakeNewMod("r");
-            }
-
-            for (int i = 0; i < EnemyDropMod.itemsToAddE; i++)
-            {
-                EnemyDropMod.itemsToAddC--;
-                MakeNewMod("e");
-            }
-
-            for (int i = 0; i < EnemyDropMod.itemsToAddL; i++)
-            {
-                EnemyDropMod.itemsToAddC--;
-                MakeNewMod("l");
-            }
-
-        if (SceneManager.GetActiveScene().name == "Inventory")
-        {
-            for (int i = 0; i < slots.Length;i++)
-            {
-                if (slots[i] == true)
+                EnemyDropMod.totalItems = 0;
+                for (int i = 0; i < slots.Length;i++)
                 {
-                    ReloadMod(i);
+                    if (slots[i] == true)
+                    {
+                        ReloadMod(i);
+                    }
                 }
             }
-        }
+
+            if (EnemyDropMod.itemsToAddC > 0)
+            {
+                for (int i = 0; i < EnemyDropMod.itemsToAddC; i++)
+                {
+                    //EnemyDropMod.itemsToAddC--;
+                    //EnemyDropMod.totalItems--;
+                    MakeNewMod("c");
+                }
+                EnemyDropMod.itemsToAddC = 0;
+            }
+
+            if (EnemyDropMod.itemsToAddR > 0)
+            {
+                for (int i = 0; i < EnemyDropMod.itemsToAddR; i++)
+                {
+                    //EnemyDropMod.itemsToAddR--;
+                    //EnemyDropMod.totalItems--;
+                    MakeNewMod("r");
+                }
+                EnemyDropMod.itemsToAddR = 0;
+            }
+            
+            
+            if (EnemyDropMod.itemsToAddE > 0)
+            {
+                for (int i = 0; i < EnemyDropMod.itemsToAddE; i++)
+                {
+                    //EnemyDropMod.itemsToAddE--;
+                    //EnemyDropMod.totalItems--;
+                    MakeNewMod("e");
+                }
+                EnemyDropMod.itemsToAddE = 0;
+            }
+            
+            if (EnemyDropMod.itemsToAddL > 0)
+            {
+                for (int i = 0; i < EnemyDropMod.itemsToAddL; i++)
+                {
+                    //EnemyDropMod.itemsToAddL--;
+                    //EnemyDropMod.totalItems--;
+                    MakeNewMod("l");
+                }
+                EnemyDropMod.itemsToAddL = 0;
+            }
+
+            
+
+
 
     }
 
@@ -98,6 +123,14 @@ public class InventoryManager : MonoBehaviour
         {
             MakeNewMod("l");
         }
+
+        if (Input.GetKeyDown("m"))
+        {
+            print("slots[0]" + slots[0]);
+            print("damage[0]: " + AllModStatsHolder.damage[0]);
+            print("damage[1]: " + AllModStatsHolder.damage[1]);
+            print("Total items: " + EnemyDropMod.totalItems);
+        }
     }
 
     public void CheckFullness()
@@ -122,6 +155,7 @@ public class InventoryManager : MonoBehaviour
 
     public void ReloadMod(int i)
     {
+        EnemyDropMod.totalItems++;
         GameObject mod = Instantiate(blankMod);
         mod.transform.SetParent(ObjectSlots[i].transform);
 
@@ -144,6 +178,7 @@ public class InventoryManager : MonoBehaviour
         mod.GetComponent<Module>().myName = AllModStatsHolder.myName[i];
         mod.GetComponent<ModuleUpgrade>().cost = AllModStatsHolder.upgradeCost[i];
         mod.GetComponent<Module>().startingAmo = AllModStatsHolder.startingAmo[i];
+        
 
         mod.GetComponent<Module>().damageAugment = AllModStatsHolder.damageUp[i];
         mod.GetComponent<Module>().amoAugment = AllModStatsHolder.amoUp[i];
@@ -151,11 +186,11 @@ public class InventoryManager : MonoBehaviour
         mod.GetComponent<Module>().upgradeCostAugment = AllModStatsHolder.upgradeCostUp[i];
 
         mod.GetComponent<Module>().maxLv = AllModStatsHolder.maxLv[i];
-        mod.GetComponent<Module>().slotNum = i;
+        mod.GetComponent<Module>().slotNum = i + 1;
 
         mod.GetComponent<ModuleUpgrade>().upgradeButton = upgradeButton;
        
-
+        mod.GetComponent<Module>().rarity = AllModStatsHolder.rarity[i];
 
         if (mod.GetComponent<Module>().rarity == "l")
         {
@@ -259,6 +294,7 @@ public class InventoryManager : MonoBehaviour
         mod.GetComponent<ModuleUpgrade>().fireRate = fireRateText;
         mod.GetComponent<ModuleUpgrade>().upgradeCost = upgradeCostText;
         mod.GetComponent<Module>().maxLv = 3;
+        
 
         float startingDamageUp = 0f;
         float startingAmoUp = 0f;
@@ -376,28 +412,33 @@ public class InventoryManager : MonoBehaviour
         
         mod.GetComponent<Module>().rarity = rarity;
 
+        //print("First empty: " + (FindFirstEmpty() - 1));
         mod.transform.SetParent(ObjectSlots[FindFirstEmpty() - 1].transform);
-        slots[FindFirstEmpty()-1] = true;
+        mod.GetComponent<Module>().slotNum = FindFirstEmpty();
+        slots[FindFirstEmpty() - 1] = true;
 
-        AllModStatsHolder.type[FindFirstEmpty() - 1] = mod.GetComponent<Module>().type;
-        AllModStatsHolder.damage[FindFirstEmpty() - 1] = mod.GetComponent<Module>().damage;
-        AllModStatsHolder.aps[FindFirstEmpty() - 1] = mod.GetComponent<Module>().aps;
-        AllModStatsHolder.level[FindFirstEmpty() - 1] = mod.GetComponent<Module>().level;
-        AllModStatsHolder.reloadTime[FindFirstEmpty() - 1] = mod.GetComponent<Module>().reloadTime;
-        AllModStatsHolder.amo[FindFirstEmpty() - 1] = mod.GetComponent<Module>().amo;
-        AllModStatsHolder.myName[FindFirstEmpty() - 1] = mod.GetComponent<Module>().myName;
-        AllModStatsHolder.upgradeCost[FindFirstEmpty() - 1] = mod.GetComponent<ModuleUpgrade>().cost;
-        AllModStatsHolder.startingAmo[FindFirstEmpty() - 1] = mod.GetComponent<Module>().startingAmo;
+        //print(FindFirstEmpty() - 1);
 
-        AllModStatsHolder.damageUp[FindFirstEmpty() - 1] = mod.GetComponent<Module>().damageAugment;
-        AllModStatsHolder.amoUp[FindFirstEmpty() - 1] = mod.GetComponent<Module>().amoAugment;
-        AllModStatsHolder.fireRateUp[FindFirstEmpty() - 1] = mod.GetComponent<Module>().fireRateAugment;
-        AllModStatsHolder.upgradeCostUp[FindFirstEmpty() - 1] = mod.GetComponent<Module>().upgradeCostAugment;
+        AllModStatsHolder.type[FindFirstEmpty() - 2] = mod.GetComponent<Module>().type;
+        AllModStatsHolder.damage[FindFirstEmpty() - 2] = mod.GetComponent<Module>().damage;
+        AllModStatsHolder.aps[FindFirstEmpty() - 2] = mod.GetComponent<Module>().aps;
+        AllModStatsHolder.level[FindFirstEmpty() - 2] = mod.GetComponent<Module>().level;
+        AllModStatsHolder.reloadTime[FindFirstEmpty() - 2] = mod.GetComponent<Module>().reloadTime;
+        AllModStatsHolder.amo[FindFirstEmpty() - 2] = mod.GetComponent<Module>().amo;
+        AllModStatsHolder.myName[FindFirstEmpty() - 2] = mod.GetComponent<Module>().myName;
+        AllModStatsHolder.upgradeCost[FindFirstEmpty() - 2] = mod.GetComponent<ModuleUpgrade>().cost;
+        AllModStatsHolder.startingAmo[FindFirstEmpty() - 2] = mod.GetComponent<Module>().startingAmo;
 
-        AllModStatsHolder.maxLv[FindFirstEmpty() - 1] = mod.GetComponent<Module>().maxLv;
-        AllModStatsHolder.slotNum[FindFirstEmpty() - 1] = FindFirstEmpty() - 1;
+        AllModStatsHolder.damageUp[FindFirstEmpty() - 2] = mod.GetComponent<Module>().damageAugment;
+        AllModStatsHolder.amoUp[FindFirstEmpty() - 2] = mod.GetComponent<Module>().amoAugment;
+        AllModStatsHolder.fireRateUp[FindFirstEmpty() - 2] = mod.GetComponent<Module>().fireRateAugment;
+        AllModStatsHolder.upgradeCostUp[FindFirstEmpty() - 2] = mod.GetComponent<Module>().upgradeCostAugment;
 
-        AllModStatsHolder.rarity[FindFirstEmpty() - 1] = rarity;
+        AllModStatsHolder.maxLv[FindFirstEmpty() - 2] = mod.GetComponent<Module>().maxLv;
+        AllModStatsHolder.slotNum[FindFirstEmpty() - 2] = FindFirstEmpty() - 2;
+
+        AllModStatsHolder.rarity[FindFirstEmpty() - 2] = rarity;
+        EnemyDropMod.totalItems++;
 
 
 

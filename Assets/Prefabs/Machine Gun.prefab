@@ -3305,3 +3305,10 @@ MonoBehaviour:
   myName: 
   missile: {fileID: 2377394179659034316, guid: 7a3772d1c57bce7479986a1b5a6f1680, type: 3}
   bullet: {fileID: 7654397268079939400, guid: d03bd0135da35c148be98f8d6bb70a91, type: 3}
+  damageAugment: 0
+  amoAugment: 0
+  fireRateAugment: 0
+  upgradeCostAugment: 0
+  maxLv: 0
+  slotNum: 0
+  rarity: 

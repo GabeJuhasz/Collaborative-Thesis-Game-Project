@@ -35,7 +35,7 @@ public class ModuleUpgrade : MonoBehaviour, IPointerClickHandler
 
      public void OnPointerClick(PointerEventData eventData)
     {
-        print("clicked");
+        //print("clicked");
         upgradeButton.GetComponent<ModUpgradeButton>().myMod = gameObject;
         weaponName.text = "" + gameObject.GetComponent<Module>().myName;
         level.text = "Level: " + gameObject.GetComponent<Module>().level;

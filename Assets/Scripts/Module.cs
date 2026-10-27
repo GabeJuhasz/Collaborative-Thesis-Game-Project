@@ -96,21 +96,23 @@ public class Module : MonoBehaviour
 
     public void RefreshStatHolder()
     {
-        AllModStatsHolder.type[slotNum] = type;
-        AllModStatsHolder.damage[slotNum] = damage;
-        AllModStatsHolder.aps[slotNum] = aps;
-        AllModStatsHolder.level[slotNum] = level;
-        AllModStatsHolder.reloadTime[slotNum] = reloadTime;
-        AllModStatsHolder.amo[slotNum] = amo;
-        AllModStatsHolder.myName[slotNum] = myName;
-        AllModStatsHolder.upgradeCost[slotNum] = this.gameObject.GetComponent<ModuleUpgrade>().cost;
-        AllModStatsHolder.startingAmo[slotNum] = startingAmo;
+        AllModStatsHolder.type[slotNum - 1] = type;
+        AllModStatsHolder.damage[slotNum - 1] = damage;
+        AllModStatsHolder.aps[slotNum - 1] = aps;
+        AllModStatsHolder.level[slotNum - 1] = level;
+        AllModStatsHolder.reloadTime[slotNum - 1] = reloadTime;
+        AllModStatsHolder.amo[slotNum - 1] = amo;
+        AllModStatsHolder.myName[slotNum - 1] = myName;
+        AllModStatsHolder.upgradeCost[slotNum - 1] = this.gameObject.GetComponent<ModuleUpgrade>().cost;
+        AllModStatsHolder.startingAmo[slotNum - 1] = startingAmo;
 
-        AllModStatsHolder.damageUp[slotNum] = damageAugment;
-        AllModStatsHolder.amoUp[slotNum] = amoAugment;
-        AllModStatsHolder.fireRateUp[slotNum] = fireRateAugment;
-        AllModStatsHolder.upgradeCostUp[slotNum] = upgradeCostAugment;
+        AllModStatsHolder.damageUp[slotNum - 1] = damageAugment;
+        AllModStatsHolder.amoUp[slotNum - 1] = amoAugment;
+        AllModStatsHolder.fireRateUp[slotNum - 1] = fireRateAugment;
+        AllModStatsHolder.upgradeCostUp[slotNum - 1] = upgradeCostAugment;
 
-        AllModStatsHolder.maxLv[slotNum] = maxLv;
+        AllModStatsHolder.maxLv[slotNum - 1] = maxLv;
+        AllModStatsHolder.rarity[slotNum - 1] = rarity;
+        
     }
 }

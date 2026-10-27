@@ -17,7 +17,8 @@ public class DraggableItgem : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         mod = eventData.pointerDrag;
         if (transform.parent.GetComponent<InvnetorySlot>().shipSlot == true)
         {
-            tracker.shipmods[transform.parent.GetComponent<InvnetorySlot>().slotNum] = null;
+            //tracker.shipmods[transform.parent.GetComponent<InvnetorySlot>().slotNum] = null;
+            InventoryManager.slots[transform.parent.GetComponent<InvnetorySlot>().slotNum - 1] = false;
         }
 
         if (transform.parent.GetComponent<InvnetorySlot>().inventorySlot == true)
@@ -30,7 +31,8 @@ public class DraggableItgem : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         transform.SetAsLastSibling();
         image.raycastTarget = false;
 
-
+        //print(mod.GetComponent<Module>().slotNum -1);
+        InventoryManager.slots[mod.GetComponent<Module>().slotNum -1] = false;
     }
 
     public void OnDrag(PointerEventData eventData)

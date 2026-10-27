@@ -21,12 +21,12 @@ public void OnDrop(PointerEventData eventData)
             //GameObject dropped = eventData.pointerDrag;
             DraggableItgem draggableItgem = dropped.GetComponent<DraggableItgem>();
             draggableItgem.parentAfterDrag = transform;
-            print("empty");
+            //print("empty");
         }
 
         if (shipSlot)
         {
-           tracker.shipmods[slotNum] = dropped;
+           //tracker.shipmods[slotNum] = dropped;
            InventoryManager.slots[slotNum - 1] = true;
         }
 
@@ -36,8 +36,9 @@ public void OnDrop(PointerEventData eventData)
         }
         
         mod.GetComponent<Module>().slotNum = slotNum;
+        InventoryManager.slots[mod.GetComponent<Module>().slotNum - 1] = true;
         mod.GetComponent<Module>().RefreshStatHolder();
         
-        print("full");
+        //print("full");
     }
 }
