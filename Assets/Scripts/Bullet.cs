@@ -5,6 +5,8 @@ public class Bullet : MonoBehaviour
     public float timeAlive = 0f;
     public float speed = 10f;
     public GameObject target;
+
+    public float lifeTime = 6f;
     public float damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,31 +28,43 @@ public class Bullet : MonoBehaviour
                  target = enemies[i];
             }
         }
+        transform.LookAt(target.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
         timeAlive += Time.deltaTime;
-        if (timeAlive > 3f)
+        if (timeAlive > lifeTime)
         {
             Destroy(gameObject);
         }
 
         if (target == null)
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            //transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
         else
         {
-            transform.LookAt(target.transform.position);
+            //transform.LookAt(target.transform.position);
 
             if (Vector3.Distance(target.transform.position, transform.position) < .1f )
             {
-                target.GetComponent<EnemyStats>().hp -= damage;
-                Destroy(gameObject);
+                //target.GetComponent<EnemyStats>().hp -= damage;
+                //Destroy(gameObject);
             }
         }
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
+    }
+
+        private void OnCollisionEnter(Collision collision)
+    {
+        // Check what you hit by tag or name
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            //print("Hit an enemy: " + collision.gameObject.name);
+            collision.gameObject.GetComponent<EnemyStats>().hp -= damage;
+            Destroy(gameObject);
+        }
     }
 }

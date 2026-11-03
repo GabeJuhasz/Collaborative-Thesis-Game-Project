@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -7,6 +8,10 @@ public class EnemyAI : MonoBehaviour
     public GameObject player;
     public float speed = 5f;
     public float minDistance = 5f;
+    public GameObject laser;
+
+    public float fireRate = 1f;
+    public float progress = 0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,7 +21,14 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        progress += Time.deltaTime;
 
+        if (progress > fireRate)
+        {
+            progress = 0f;
+            Vector3 spawnPosition = gameObject.transform.position;
+            GameObject weapon = Instantiate(laser, spawnPosition, Quaternion.identity);
+        }
 
         if (Vector3.Distance(transform.position, player.transform.position) > minDistance)
         {
