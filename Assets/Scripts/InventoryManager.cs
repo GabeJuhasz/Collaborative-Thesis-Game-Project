@@ -104,23 +104,28 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown("c"))
         {
+            if (SceneManager.GetActiveScene().name == "Inventory")
             MakeNewMod("c");
         }
 
         if (Input.GetKeyDown("r"))
         {
+            if (SceneManager.GetActiveScene().name == "Inventory")
             MakeNewMod("r");
         }
 
         if (Input.GetKeyDown("e"))
         {
+            if (SceneManager.GetActiveScene().name == "Inventory")
             MakeNewMod("e");
         }
 
         if (Input.GetKeyDown("l"))
         {
+            if (SceneManager.GetActiveScene().name == "Inventory")
             MakeNewMod("l");
         }
 
