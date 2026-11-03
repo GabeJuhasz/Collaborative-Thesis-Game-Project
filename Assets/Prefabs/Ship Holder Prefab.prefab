@@ -3247,6 +3247,97 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!1 &907498869274704094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1173057561202895962}
+  - component: {fileID: 5218197507697621543}
+  - component: {fileID: 4792864443910143911}
+  m_Layer: 0
+  m_Name: ModTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1173057561202895962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907498869274704094}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.55, y: 3.6499996, z: -4.4621477}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7035874724578278975}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5218197507697621543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907498869274704094}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a2638faeb36de40981439b732851e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot1: {fileID: 0}
+  slot2: {fileID: 0}
+  slot3: {fileID: 0}
+  slot4: {fileID: 0}
+  slot5: {fileID: 0}
+  slot6: {fileID: 0}
+  shipmods:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  missileLauncher: {fileID: 8352250083220287760, guid: 7eacbd7cf0ef15f4fb3ab932a1459766, type: 3}
+  machineGun: {fileID: 5984877542336923266, guid: e8efdaf703f89df4e8072bef64a7c0be, type: 3}
+  ship: {fileID: 0}
+--- !u!114 &4792864443910143911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907498869274704094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c11cbaf14cead45a9fff823f049f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectSlots: []
+  blankMod: {fileID: 7931697331125548764, guid: 3e4ee6a6112169243b16dc3e7b497b9b, type: 3}
+  modTracker: {fileID: 0}
+  weaponNameText: {fileID: 0}
+  levelText: {fileID: 0}
+  damageText: {fileID: 0}
+  amoText: {fileID: 0}
+  fireRateText: {fileID: 0}
+  upgradeCostText: {fileID: 0}
+  commonBullet: {fileID: 0}
+  rareBullet: {fileID: 0}
+  epicBullet: {fileID: 0}
+  legendaryBullet: {fileID: 0}
+  commonMissile: {fileID: 0}
+  rareMissile: {fileID: 0}
+  epicMissile: {fileID: 0}
+  legendaryMissile: {fileID: 0}
+  upgradeButton: {fileID: 0}
 --- !u!1 &1117326783546321587
 GameObject:
   m_ObjectHideFlags: 0
@@ -3405,6 +3496,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1173057561202895962}
   - {fileID: 8463968793754556372}
   - {fileID: 4116860671956702111}
   - {fileID: 7952480889945841767}
