@@ -16,6 +16,7 @@ public class ModuleUpgrade : MonoBehaviour, IPointerClickHandler
     public float[] fireRateUp;
     public float[] upgradeCostUp;
 
+//this needs to be kept track of between scenes
     public float UpgradeCount = 0f;
 
     public GameObject upgradeButton;

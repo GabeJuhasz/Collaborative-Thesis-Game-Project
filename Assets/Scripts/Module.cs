@@ -94,6 +94,7 @@ public class Module : MonoBehaviour
         }
     }
 
+//check to see if this is updating everying if we added new things to update
     public void RefreshStatHolder()
     {
         AllModStatsHolder.type[slotNum - 1] = type;

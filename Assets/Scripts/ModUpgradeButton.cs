@@ -22,11 +22,20 @@ public class ModUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
     // Update is called once per frame
     void Update()
     {
-        
+        if (myMod == null)
+        {
+            weaponName.text = "Select a Module";
+            level.text = "Level: Select a Module";
+            damage.text = "Damage: Select a Module";
+            amo.text = "Amo: Select a Module";
+            fireRate.text = "Fire Rate: Select a Module";
+            upgradeCost.text = "Upgrade Cost: Select a Module";
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (myMod != null)
         if (myMod.GetComponent<ModuleUpgrade>().UpgradeCount < myMod.GetComponent<Module>().maxLv)
         {
             //weaponName.text = "" + myMod.GetComponent<Module>().myName;
@@ -38,10 +47,10 @@ public class ModUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
             weaponName.text = "" + myMod.GetComponent<Module>().myName;
             level.text = "Level: " + myMod.GetComponent<Module>().level + " -> " + (myMod.GetComponent<Module>().level + 1);
-            damage.text = "Damage: " + myMod.GetComponent<Module>().damage + " -> " + myMod.GetComponent<Module>().damage * myMod.GetComponent<Module>().damageAugment * myMod.GetComponent<Module>().level;
-            amo.text = "Amo: " + myMod.GetComponent<Module>().amo + "-> " + myMod.GetComponent<Module>().amo * myMod.GetComponent<Module>().amoAugment * myMod.GetComponent<Module>().level;
-            fireRate.text = "Fire Rate: " + myMod.GetComponent<Module>().aps + " -> " + myMod.GetComponent<Module>().aps * myMod.GetComponent<Module>().fireRateAugment * myMod.GetComponent<Module>().level;
-            upgradeCost.text = "Upgrade Cost: " + myMod.GetComponent<ModuleUpgrade>().cost + " -> " + myMod.GetComponent<ModuleUpgrade>().cost * myMod.GetComponent<Module>().upgradeCostAugment * myMod.GetComponent<Module>().level;
+            damage.text = "Damage: " + myMod.GetComponent<Module>().damage + " -> " + myMod.GetComponent<Module>().damage * myMod.GetComponent<Module>().damageAugment;
+            amo.text = "Amo: " + myMod.GetComponent<Module>().amo + "-> " + myMod.GetComponent<Module>().amo * myMod.GetComponent<Module>().amoAugment;
+            fireRate.text = "Fire Rate: " + myMod.GetComponent<Module>().aps + " -> " + myMod.GetComponent<Module>().aps * myMod.GetComponent<Module>().fireRateAugment;
+            upgradeCost.text = "Upgrade Cost: " + myMod.GetComponent<ModuleUpgrade>().cost + " -> " + myMod.GetComponent<ModuleUpgrade>().cost * myMod.GetComponent<Module>().upgradeCostAugment;
         }
         else
         {
@@ -57,35 +66,53 @@ public class ModUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (myMod != null)
+        {
         weaponName.text = "" + myMod.GetComponent<Module>().myName;
         level.text = "Level: " + myMod.GetComponent<Module>().level;
         damage.text = "Damage: " + myMod.GetComponent<Module>().damage;
         amo.text = "Amo: " + myMod.GetComponent<Module>().amo;
         fireRate.text = "Fire Rate: " + myMod.GetComponent<Module>().aps;
-        upgradeCost.text = "Upgrade Cost: " + myMod.GetComponent<ModuleUpgrade>().cost;
+        upgradeCost.text = "Upgrade Cost: " + myMod.GetComponent<ModuleUpgrade>().cost; 
+        }
+
     }
 
+    public void CantAfford()
+    {
+        print("Cant Afford!");
+    }
     public void UpgradeMod()
     {
-        if (myMod.GetComponent<ModuleUpgrade>().UpgradeCount < myMod.GetComponent<Module>().maxLv)
-        {
-            myMod.GetComponent<ModuleUpgrade>().UpgradeCount++;
-            myMod.GetComponent<Module>().level++;
-            myMod.GetComponent<Module>().damage *= myMod.GetComponent<Module>().damageAugment * myMod.GetComponent<Module>().level;
-            myMod.GetComponent<Module>().amo *= myMod.GetComponent<Module>().amoAugment * myMod.GetComponent<Module>().level;
-            myMod.GetComponent<ModuleUpgrade>().cost *= myMod.GetComponent<Module>().upgradeCostAugment * myMod.GetComponent<Module>().level;
-            myMod.GetComponent<Module>().aps *= myMod.GetComponent<Module>().fireRateAugment * myMod.GetComponent<Module>().level;
-            myMod.GetComponent<Module>().RefreshStatHolder();
+        if (myMod != null)
+            if (myMod.GetComponent<ModuleUpgrade>().cost <= SellButton.coins)
+            {
+                if (myMod.GetComponent<ModuleUpgrade>().UpgradeCount < myMod.GetComponent<Module>().maxLv)
+                {
+                    SellButton.coins -= myMod.GetComponent<ModuleUpgrade>().cost;
+                    myMod.GetComponent<ModuleUpgrade>().UpgradeCount++;
+                    myMod.GetComponent<Module>().level++;
+                    myMod.GetComponent<Module>().damage *= myMod.GetComponent<Module>().damageAugment;// * myMod.GetComponent<Module>().level
+                    myMod.GetComponent<Module>().amo *= myMod.GetComponent<Module>().amoAugment;// * myMod.GetComponent<Module>().level
+                    myMod.GetComponent<ModuleUpgrade>().cost *= myMod.GetComponent<Module>().upgradeCostAugment;// * myMod.GetComponent<Module>().level
+                    myMod.GetComponent<Module>().aps *= myMod.GetComponent<Module>().fireRateAugment;// * myMod.GetComponent<Module>().level
+                    myMod.GetComponent<Module>().RefreshStatHolder();
 
-        }
-        else
-        {
-            level.text = "Level: " + myMod.GetComponent<Module>().level + " -> Max Lv";
-            damage.text = "Damage: " + myMod.GetComponent<Module>().damage;
-            amo.text = "Amo: " + myMod.GetComponent<Module>().amo;
-            fireRate.text = "Fire Rate: " + myMod.GetComponent<Module>().aps;
-            upgradeCost.text = "Upgrade Cost: " + myMod.GetComponent<ModuleUpgrade>().cost;
-        }
+                }
+                else
+                {
+                    level.text = "Level: " + myMod.GetComponent<Module>().level + " -> Max Lv";
+                    damage.text = "Damage: " + myMod.GetComponent<Module>().damage;
+                    amo.text = "Amo: " + myMod.GetComponent<Module>().amo;
+                    fireRate.text = "Fire Rate: " + myMod.GetComponent<Module>().aps;
+                    upgradeCost.text = "Upgrade Cost: " + myMod.GetComponent<ModuleUpgrade>().cost;
+                }
+            }
+            else
+            {
+                CantAfford();
+            }
+        
            
     }
 }

@@ -3336,6 +3336,13 @@ MonoBehaviour:
   myName: 
   missile: {fileID: 2377394179659034316, guid: 7a3772d1c57bce7479986a1b5a6f1680, type: 3}
   bullet: {fileID: 7654397268079939400, guid: d03bd0135da35c148be98f8d6bb70a91, type: 3}
+  damageAugment: 0
+  amoAugment: 0
+  fireRateAugment: 0
+  upgradeCostAugment: 0
+  maxLv: 0
+  slotNum: 0
+  rarity: 
 --- !u!1 &2366889547769296391
 GameObject:
   m_ObjectHideFlags: 0
@@ -3377,6 +3384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7035874724578278975}
   - component: {fileID: 45617386479653598}
+  - component: {fileID: 7563217475364857425}
   m_Layer: 0
   m_Name: Ship Holder Prefab
   m_TagString: Player
@@ -3429,6 +3437,27 @@ MonoBehaviour:
   rotSpeed: 2
   speed: 20
   flightSpeed: 0.05
+--- !u!114 &7563217475364857425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679057740065585016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7137f8f0d51d2e44b99f7816e1c23f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missileLauncher: {fileID: 8352250083220287760, guid: 7eacbd7cf0ef15f4fb3ab932a1459766, type: 3}
+  machineGun: {fileID: 5984877542336923266, guid: e8efdaf703f89df4e8072bef64a7c0be, type: 3}
+  slot1: {fileID: 8148964910504053447}
+  slot2: {fileID: 8483054264013132074}
+  slot3: {fileID: 6755135460579180981}
+  slot4: {fileID: 2366889547769296391}
+  slot5: {fileID: 1117326783546321587}
+  slot6: {fileID: 8904037385739831392}
+  hasPrefabMod: 0
 --- !u!1 &3165349503445001209
 GameObject:
   m_ObjectHideFlags: 0
@@ -3487,6 +3516,13 @@ MonoBehaviour:
   myName: 
   missile: {fileID: 2377394179659034316, guid: 7a3772d1c57bce7479986a1b5a6f1680, type: 3}
   bullet: {fileID: 7654397268079939400, guid: d03bd0135da35c148be98f8d6bb70a91, type: 3}
+  damageAugment: 0
+  amoAugment: 0
+  fireRateAugment: 0
+  upgradeCostAugment: 0
+  maxLv: 0
+  slotNum: 0
+  rarity: 
 --- !u!1 &3910141191513054851
 GameObject:
   m_ObjectHideFlags: 0
@@ -7396,6 +7432,13 @@ MonoBehaviour:
   myName: 
   missile: {fileID: 2377394179659034316, guid: 7a3772d1c57bce7479986a1b5a6f1680, type: 3}
   bullet: {fileID: 7654397268079939400, guid: d03bd0135da35c148be98f8d6bb70a91, type: 3}
+  damageAugment: 0
+  amoAugment: 0
+  fireRateAugment: 0
+  upgradeCostAugment: 0
+  maxLv: 0
+  slotNum: 0
+  rarity: 
 --- !u!1 &4608975597360788349
 GameObject:
   m_ObjectHideFlags: 0
@@ -7454,6 +7497,13 @@ MonoBehaviour:
   myName: 
   missile: {fileID: 2377394179659034316, guid: 7a3772d1c57bce7479986a1b5a6f1680, type: 3}
   bullet: {fileID: 7654397268079939400, guid: d03bd0135da35c148be98f8d6bb70a91, type: 3}
+  damageAugment: 0
+  amoAugment: 0
+  fireRateAugment: 0
+  upgradeCostAugment: 0
+  maxLv: 0
+  slotNum: 0
+  rarity: 
 --- !u!1 &5526622665524851872
 GameObject:
   m_ObjectHideFlags: 0

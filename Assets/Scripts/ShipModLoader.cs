@@ -11,18 +11,43 @@ public class ShipModLoader : MonoBehaviour
     public GameObject slot4;
     public GameObject slot5;
     public GameObject slot6;
+
+    public bool hasPrefabMod = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         BuildModsInLevel();
+        
+        if (hasPrefabMod == false)
+        {
+            hasPrefabMod = true;
+            BuildPrefamMod(1);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
+    public void BuildPrefamMod(int a)
+    {
+        Vector3 spawnPosition = slot1.transform.position;
+        GameObject weapon = Instantiate(machineGun, spawnPosition, Quaternion.identity);
+        weapon.transform.SetParent(slot1.transform); 
+
+                    weapon.transform.GetChild(0).GetComponent<Module>().myName = "Machine Gun";
+                    weapon.transform.GetChild(0).GetComponent<Module>().type = "Bullet";
+                    weapon.transform.GetChild(0).GetComponent<Module>().damage = 10;
+                    weapon.transform.GetChild(0).GetComponent<Module>().aps = 1;
+                    weapon.transform.GetChild(0).GetComponent<Module>().level = 1;
+                    weapon.transform.GetChild(0).GetComponent<Module>().reloadTime = 1;
+                    weapon.transform.GetChild(0).GetComponent<Module>().amo = 10;
+                    weapon.transform.GetChild(0).GetComponent<Module>().myName = "Machine Gun";
+                    weapon.transform.GetChild(0).GetComponent<Module>().startingAmo = 10;
+                    weapon.transform.GetChild(0).GetComponent<Module>().rarity = "c";
+    }
     public void BuildModsInLevel()
     {
         Vector3 spawnPosition = new Vector3(0f,0f,0f);
@@ -48,7 +73,8 @@ public class ShipModLoader : MonoBehaviour
                     
                     if (i == 0)
                     {
-                        weapon.transform.SetParent(slot1.transform);  
+                        weapon.transform.SetParent(slot1.transform);
+                        hasPrefabMod = true;  
                     }
                     if (i == 1)
                     {
@@ -99,7 +125,8 @@ public class ShipModLoader : MonoBehaviour
                     
                     if (i == 0)
                     {
-                        weapon.transform.SetParent(slot1.transform);  
+                        weapon.transform.SetParent(slot1.transform);
+                        hasPrefabMod = true;  
                     }
                     if (i == 1)
                     {
