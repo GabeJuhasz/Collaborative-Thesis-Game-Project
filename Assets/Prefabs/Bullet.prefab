@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeAlive: 0
-  speed: 10
+  speed: 20
   target: {fileID: 0}
+  lifeTime: 6
   damage: 1

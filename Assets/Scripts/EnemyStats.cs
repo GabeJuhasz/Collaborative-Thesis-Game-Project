@@ -7,6 +7,8 @@ public class EnemyStats : MonoBehaviour
     public float damage;
 
     public EnemyDropMod dropMod;
+
+    public EnemySpawner spawner;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +22,7 @@ public class EnemyStats : MonoBehaviour
         {
             dropMod.DropItem();
             Destroy(gameObject);
+            spawner.numEnemies -= 1;
         }
     }
 }
