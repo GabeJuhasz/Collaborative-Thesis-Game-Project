@@ -41,6 +41,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/pi/Desert level 1/Desert level.unity
     guid: 3469d5298e379fe45956d0c068d17861
+  - enabled: 1
+    path: Assets/Scenes/pi/Magma level 2/Magma level.unity
+    guid: 878cd5616ea52cc43a7765d3d40f0283
+  - enabled: 1
+    path: Assets/Scenes/pi/snow level 4/snow level.unity
+    guid: 4b3693f24ab517449ae8ccf8eefab7b5
+  - enabled: 1
+    path: Assets/Scenes/pi/UI/Planet Select.unity
+    guid: 14f54940a111208459c60aa00bf20a16
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0
