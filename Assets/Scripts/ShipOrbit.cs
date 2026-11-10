@@ -38,6 +38,9 @@ public class ShipOrbit : MonoBehaviour
     public GameObject zone3Stop1;
     public GameObject zone4Stop1;
     public GameObject zone5Stop1;
+
+    private float fastSpeed = -15f;
+    private float normalSpeed = -4.2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -97,33 +100,37 @@ public class ShipOrbit : MonoBehaviour
         }
 
         //&& (transform.rotation.x < -50f && transform.rotation.x > -63f)
-        if (call1 && (orbitProgress % 360 < 4))
-        {
-            print("going");
-            GoToLevelN(1);
-        }
+       // if((orbitProgress % 360 < 4))
+        //{
+            if (call1 )
+            {
+                print("going");
+                GoToLevelN(1);
+            }
 
-        if (call2 && (orbitProgress % 360 < 4))
-        {
-            print("going");
-            GoToLevelN(2);
-        }
+            if (call2)
+            {
+                print("going");
+                GoToLevelN(2);
+            }
         
-        if (call3 && (orbitProgress % 360 < 4))
-        {
-            print("going");
-            GoToLevelN(3);
-        }
-        if (call4 && (orbitProgress % 360 < 4))
-        {
-            print("going");
-            GoToLevelN(4);
-        }
-        if (call5 && (orbitProgress % 360 < 4))
-        {
-            print("going");
-            GoToLevelN(5);
-        }
+            if (call3)
+            {
+                print("going");
+                GoToLevelN(3);
+            }
+            if (call4)
+            {
+                print("going");
+                GoToLevelN(4);
+            }
+            if (call5)
+            {
+                print("going");
+                GoToLevelN(5);
+            }
+        //}
+
 
         //if (orbitProgress % 360 < 3)
         //{
@@ -136,12 +143,14 @@ public class ShipOrbit : MonoBehaviour
             if (Vector3.Distance(transform.position, zone2Stop1.transform.position) > .08f)
             {
                 transform.Translate(Vector3.forward * -speed * Time.deltaTime);
+                speed = fastSpeed;
             }
             else
             {
                 going = false;
                 call1 = false;
                 orbitProgress = 0f;
+                speed = normalSpeed;
             }
         }
 
@@ -150,12 +159,14 @@ public class ShipOrbit : MonoBehaviour
             if (Vector3.Distance(transform.position, zone1Stop1.transform.position) > .08f)
             {
                 transform.Translate(Vector3.forward * -speed * Time.deltaTime);
+                speed = fastSpeed;
             }
             else
             {
                 going = false;
                 call2 = false;
                 orbitProgress = 0f;
+                speed = normalSpeed;
             }
         }
 
@@ -164,12 +175,14 @@ public class ShipOrbit : MonoBehaviour
             if (Vector3.Distance(transform.position, zone3Stop1.transform.position) > .08f)
             {
                 transform.Translate(Vector3.forward * -speed * Time.deltaTime);
+                speed = fastSpeed;
             }
             else
             {
                 going = false;
                 call3 = false;
                 orbitProgress = 0f;
+                speed = normalSpeed;
             }
         }
 
@@ -178,12 +191,14 @@ public class ShipOrbit : MonoBehaviour
             if (Vector3.Distance(transform.position, zone4Stop1.transform.position) > .08f)
             {
                 transform.Translate(Vector3.forward * -speed * Time.deltaTime);
+                speed = fastSpeed;
             }
             else
             {
                 going = false;
                 call4 = false;
                 orbitProgress = 0f;
+                speed = normalSpeed;
             }
         }
         
@@ -192,12 +207,14 @@ public class ShipOrbit : MonoBehaviour
             if (Vector3.Distance(transform.position, zone5Stop1.transform.position) > .08f)
             {
                 transform.Translate(Vector3.forward * -speed * Time.deltaTime);
+                speed = fastSpeed;
             }
             else
             {
                 going = false;
                 call5 = false;
                 orbitProgress = 0f;
+                speed = normalSpeed;
             }
         }
     }

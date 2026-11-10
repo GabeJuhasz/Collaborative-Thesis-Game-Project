@@ -21,12 +21,12 @@ public class Move3Dnew : MonoBehaviour
     {
         if (Input.GetKey("d"))
         {
-            roty += rotSpeed;
+            roty += rotSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey("a"))
         {
-            roty -= rotSpeed;
+            roty -= rotSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey("s"))
