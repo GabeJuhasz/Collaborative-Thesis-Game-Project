@@ -22,6 +22,7 @@ public class SceneLoader : MonoBehaviour
 
     public void BackToInventory()
     {
+        print("back");
         SceneManager.LoadScene("Inventory");
     }
 }

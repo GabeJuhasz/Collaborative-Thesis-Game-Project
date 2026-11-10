@@ -13,7 +13,9 @@ public class EnemyAI : MonoBehaviour
     public float fireRate = 1f;
     public float progress = 0f;
 
-    public float sightRange = 10f;
+    public float sightRange = 20f;
+
+    public EnemySpawner spawner;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,7 +25,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < sightRange)
+        if (Vector3.Distance(transform.position, player.transform.position) < sightRange/2)
         {
             progress += Time.deltaTime;
 
@@ -41,6 +43,12 @@ public class EnemyAI : MonoBehaviour
                 }
         }
 
-            
+        if (Vector3.Distance(transform.position, player.transform.position) > sightRange / 2 && Vector3.Distance(transform.position, spawner.transform.position) > spawner.sightRange/3)
+        {
+            transform.LookAt(spawner.transform.position);
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
+
+
     }
 }

@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro;
+//using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -17,7 +17,13 @@ public class EnemySpawner : MonoBehaviour
     public float spawnLimit = 5f;
     public float numEnemies = 0f;
 
-    public TMP_Text inOut;
+    public float maxEnemies = 10f;
+    public float enemiesKilled = 0f;
+
+    public GameObject floorZone;
+    public GameObject floorZoneDone;
+
+    //public TMP_Text inOut;
 
     public GameObject player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,17 +48,17 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemeies()
     {
-        if ((Vector3.Distance(transform.position, player.transform.position) < sightRange/2))
-        {
-            inOut.text = "In";
-        }
-        else
-        {
+        //if ((Vector3.Distance(transform.position, player.transform.position) < sightRange/2))
+        //{
+            //inOut.text = "In";
+        //}
+        //else
+        //{
             //print("out");
-            inOut.text = "out";
-        }
+            //inOut.text = "out";
+        //}
 
-        if ((Vector3.Distance(transform.position, player.transform.position) < sightRange/2) || numEnemies < minEnemies)
+        if (((Vector3.Distance(transform.position, player.transform.position) < sightRange/2) || numEnemies < minEnemies) && enemiesKilled <= maxEnemies)
         {
             //print("In");
             //inOut.text = "In";
@@ -61,9 +67,16 @@ public class EnemySpawner : MonoBehaviour
                 Vector3 spawnPosition = transform.position;
                 GameObject newEnemy = Instantiate(enemy, spawnPosition, Quaternion.identity);
                 newEnemy.GetComponent<EnemyStats>().spawner = this;
+                newEnemy.GetComponent<EnemyAI>().spawner = this;
                 newEnemy.GetComponent<EnemyStats>().damage = damage;
                 numEnemies++;
             }
+        }
+
+        if (enemiesKilled >= maxEnemies)
+        {
+            floorZone.SetActive(false);
+            floorZoneDone.SetActive(true);
         }
         
 

@@ -131,7 +131,8 @@ MonoBehaviour:
   laser: {fileID: 5909616185669085304, guid: f025d6aead70cb04a8c25e62ab4689eb, type: 3}
   fireRate: 1
   progress: 0
-  sightRange: 40
+  sightRange: 80
+  spawner: {fileID: 0}
 --- !u!114 &100149497566901140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +204,10 @@ PrefabInstance:
     - target: {fileID: 1427495434024204557, guid: e6e28839919f263469f62be72e432504, type: 3}
       propertyPath: m_Name
       value: Range Indicator
+      objectReference: {fileID: 0}
+    - target: {fileID: 1427495434024204557, guid: e6e28839919f263469f62be72e432504, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4193410630561591337, guid: e6e28839919f263469f62be72e432504, type: 3}
       propertyPath: m_LocalPosition.x

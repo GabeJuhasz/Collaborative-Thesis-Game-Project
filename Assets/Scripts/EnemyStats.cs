@@ -20,9 +20,15 @@ public class EnemyStats : MonoBehaviour
     {
         if (hp <= 0)
         {
-            dropMod.DropItem();
-            Destroy(gameObject);
-            spawner.numEnemies -= 1;
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        dropMod.DropItem();
+        spawner.numEnemies -= 1;
+        spawner.enemiesKilled++;
+        Destroy(gameObject);
     }
 }
