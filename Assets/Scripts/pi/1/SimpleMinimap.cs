@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-// 作者 / Author: Ruiqi Pi
+// Author: Ruiqi Pi
 // 用途：在二维雷达上显示两个目标的相对位置、远近和高低。 / Purpose: Show two targets on a 2D radar, using position for direction and distance, and icons for relative height.
 public class SimpleMinimap : MonoBehaviour
 {
@@ -19,10 +19,20 @@ public class SimpleMinimap : MonoBehaviour
     public float mapScale = 0.1f;      // 世界距离转换为雷达距离的比例 / Radar UI units per world unit
     public float heightTolerance = 5f; // 高度差在这个范围内算同高 / Height difference treated as the same level
 
+    public RectTransform playerArrow;
+    public RectTransform enemyArrow1;
+    public RectTransform enemyArrow2;
+
+
+
     void Update()
     {
         ShowTarget(target1, icon1);
         ShowTarget(target2, icon2);
+
+        RotateArrow(player, playerArrow);
+        RotateArrow(target1, enemyArrow1);
+        RotateArrow(target2, enemyArrow2);
     }
 
     void ShowTarget(Transform target, Image icon)
@@ -44,5 +54,20 @@ public class SimpleMinimap : MonoBehaviour
             icon.sprite = belowIcon;
         else
             icon.sprite = levelIcon;
+
+
+
+    }
+
+    void RotateArrow(Transform ship, RectTransform arrow)
+    {
+        if (ship == null || arrow == null) 
+            return;
+        Vector3 forward = ship.forward;
+
+        if(forward.x * forward.x +forward.z * forward.z < 0.0001f)
+            return;
+        float angle = Mathf.Atan2 (forward.x, forward.z) * Mathf.Rad2Deg;
+        arrow.localRotation = Quaternion.Euler(0f,0f,-angle);
     }
 }

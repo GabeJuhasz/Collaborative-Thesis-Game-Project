@@ -27,11 +27,13 @@ public class PlanetRoute : MonoBehaviour
         foreach (Stop stop in stops)
         {
             Stop destination = stop;
-            stop.button.onClick.AddListener(() =>
+            stop.button.onClick.AddListener
+            (() =>
             {
                 if (destination.button.interactable)
                     navigation.GoToScene(destination.sceneName);
-            });
+            }
+            );
         }
     }
 
