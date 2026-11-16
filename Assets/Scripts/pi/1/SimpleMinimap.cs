@@ -2,72 +2,83 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Author: Ruiqi Pi
-// 用途：在二维雷达上显示两个目标的相对位置、远近和高低。 / Purpose: Show two targets on a 2D radar, using position for direction and distance, and icons for relative height.
+// 在二维雷达上显示玩家朝向、敌机位置、机头和高低。 / Shows player heading, enemy positions, headings and relative height on a 2D radar.
 public class SimpleMinimap : MonoBehaviour
 {
-    public Transform player;          // 玩家 / Player
-    public Transform target1;         // 地图上的第一个物体 / First target in the scene
-    public Transform target2;         // 地图上的第二个物体 / Second target in the scene
-
-    public Image icon1;               // 雷达里的第一个图标 / First target's radar icon
-    public Image icon2;               // 雷达里的第二个图标 / Second target's radar icon
-
-    public Sprite aboveIcon;          // ▲ 高于玩家 / Above the player
-    public Sprite belowIcon;          // ▼ 低于玩家 / Below the player
-    public Sprite levelIcon;          // ● 与玩家高度接近 / Near the player's height
-
-    public float mapScale = 0.1f;      // 世界距离转换为雷达距离的比例 / Radar UI units per world unit
-    public float heightTolerance = 5f; // 高度差在这个范围内算同高 / Height difference treated as the same level
-
+    public Transform player;
     public RectTransform playerArrow;
-    public RectTransform enemyArrow1;
-    public RectTransform enemyArrow2;
 
+    public Image arrowTemplate;
+    public Image heightTemplate;
+    public Sprite aboveIcon, belowIcon, levelIcon;
 
+    public float mapScale = 0.1f;
+    public float heightTolerance = 5f;
+    public float iconGap = 12f;
 
-    void Update()
+    void LateUpdate()
     {
-        ShowTarget(target1, icon1);
-        ShowTarget(target2, icon2);
+        if (player == null) return;
 
-        RotateArrow(player, playerArrow);
-        RotateArrow(target1, enemyArrow1);
-        RotateArrow(target2, enemyArrow2);
+        if (playerArrow != null) PointArrow(playerArrow, player);
+        if (arrowTemplate == null || heightTemplate == null) return;
+
+        foreach (MinimapEnemy enemy in MinimapEnemy.ActiveEnemies)
+        {
+            DrawEnemy(enemy);
+        }
     }
 
-    void ShowTarget(Transform target, Image icon)
+    void DrawEnemy(MinimapEnemy enemy)
     {
-        if (player == null || target == null || icon == null)
-            return;
+        // 首次显示时复制一对图标。 / Create one pair of icons when the enemy first appears.
+        if (enemy.arrow == null)
+        {
+            enemy.arrow = CopyIcon(arrowTemplate);
+            enemy.heightIcon = CopyIcon(heightTemplate);
+        }
 
-        // 目标相对于玩家的位置。 / Get the target's position relative to the player.
-        Vector3 offset = target.position - player.position;
+        Vector3 offset = enemy.transform.position - player.position;
+        Vector2 point = new Vector2(offset.x, offset.z) * mapScale;
+        enemy.arrow.rectTransform.anchoredPosition = point;
+        PointArrow(enemy.arrow.rectTransform, enemy.transform);
 
-        // 世界 X、Z 对应雷达的左右、上下，不随玩家转向。 / Map world X and Z to radar X and Y; the map does not rotate with the player.
-        icon.rectTransform.anchoredPosition =
-            new Vector2(offset.x, offset.z) * mapScale;
-
-        // 世界里的 Y 差值单独用来判断高度。 / Use the world Y difference to choose the height icon.
+        // 高低符号单独摆放，始终保持正立。 / Position the height symbol separately so it stays upright.
+        Vector2 side;
         if (offset.y > heightTolerance)
-            icon.sprite = aboveIcon;
+        {
+            enemy.heightIcon.sprite = aboveIcon;
+            side = Vector2.up;
+        }
         else if (offset.y < -heightTolerance)
-            icon.sprite = belowIcon;
+        {
+            enemy.heightIcon.sprite = belowIcon;
+            side = Vector2.down;
+        }
         else
-            icon.sprite = levelIcon;
+        {
+            enemy.heightIcon.sprite = levelIcon;
+            side = Vector2.right;
+        }
 
-
-
+        enemy.heightIcon.rectTransform.anchoredPosition = point + side * iconGap;
     }
 
-    void RotateArrow(Transform ship, RectTransform arrow)
+    Image CopyIcon(Image template)
     {
-        if (ship == null || arrow == null) 
-            return;
-        Vector3 forward = ship.forward;
+        Image icon = Instantiate(template, transform, false);
+        icon.gameObject.SetActive(true);
+        return icon;
+    }
 
-        if(forward.x * forward.x +forward.z * forward.z < 0.0001f)
-            return;
-        float angle = Mathf.Atan2 (forward.x, forward.z) * Mathf.Rad2Deg;
-        arrow.localRotation = Quaternion.Euler(0f,0f,-angle);
+    void PointArrow(RectTransform arrow, Transform ship)
+    {
+        Vector3 nose = ship.forward;
+
+        // 机头竖直时保留上次朝向。 / Keep the last heading when the nose points straight up or down.
+        if (nose.x * nose.x + nose.z * nose.z < 0.0001f) return;
+
+        float angle = -Mathf.Atan2(nose.x, nose.z) * Mathf.Rad2Deg;
+        arrow.localRotation = Quaternion.Euler(0f, 0f, angle);
     }
 }

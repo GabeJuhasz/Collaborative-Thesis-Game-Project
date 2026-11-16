@@ -752,6 +752,8 @@ GameObject:
   - component: {fileID: 223018667}
   - component: {fileID: 223018669}
   - component: {fileID: 223018668}
+  - component: {fileID: 2087711304}
+  - component: {fileID: 2087711305}
   m_Layer: 5
   m_Name: Fog
   m_TagString: Untagged
@@ -1064,6 +1066,8 @@ GameObject:
   - component: {fileID: 337351720}
   - component: {fileID: 337351722}
   - component: {fileID: 337351721}
+  - component: {fileID: 2087711300}
+  - component: {fileID: 2087711301}
   m_Layer: 5
   m_Name: Fog
   m_TagString: Untagged
@@ -1218,6 +1222,8 @@ GameObject:
   - component: {fileID: 440490993}
   - component: {fileID: 440490995}
   - component: {fileID: 440490994}
+  - component: {fileID: 2087711302}
+  - component: {fileID: 2087711303}
   m_Layer: 5
   m_Name: Fog
   m_TagString: Untagged
@@ -2783,6 +2789,9 @@ GameObject:
   - component: {fileID: 1322462113}
   - component: {fileID: 1322462112}
   - component: {fileID: 1322462111}
+  - component: {fileID: 2087711306}
+  - component: {fileID: 2087711307}
+  - component: {fileID: 2087711308}
   m_Layer: 5
   m_Name: Fog
   m_TagString: Untagged
@@ -5142,6 +5151,132 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076241380}
   m_CullTransparentMesh: 1
+--- !u!114 &2087711300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337351719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2a801274aa49fbad20daae57a26ed5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  planetRenderer: {fileID: 1396187029}
+  grayscaleMaterial: {fileID: 2100000, guid: 8d66e97bdb8c49f38c7f2cd591e5b0f3, type: 2}
+--- !u!114 &2087711301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337351719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2a801274aa49fbad20daae57a26ed5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  planetRenderer: {fileID: 1243925801}
+  grayscaleMaterial: {fileID: 2100000, guid: 2d04c9fb3e1b4077be598f11fce4744c, type: 2}
+--- !u!114 &2087711302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440490992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2a801274aa49fbad20daae57a26ed5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  planetRenderer: {fileID: 479159301}
+  grayscaleMaterial: {fileID: 2100000, guid: 1807a383b4164ffd98f0d0dcf997aa11, type: 2}
+--- !u!114 &2087711303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440490992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2a801274aa49fbad20daae57a26ed5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  planetRenderer: {fileID: 955530816}
+  grayscaleMaterial: {fileID: 2100000, guid: 2d04c9fb3e1b4077be598f11fce4744c, type: 2}
+--- !u!114 &2087711304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223018666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2a801274aa49fbad20daae57a26ed5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  planetRenderer: {fileID: 2061354345}
+  grayscaleMaterial: {fileID: 2100000, guid: 6b596b566abd4239a70772944c058c11, type: 2}
+--- !u!114 &2087711305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223018666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2a801274aa49fbad20daae57a26ed5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  planetRenderer: {fileID: 1946819251}
+  grayscaleMaterial: {fileID: 2100000, guid: 2d04c9fb3e1b4077be598f11fce4744c, type: 2}
+--- !u!114 &2087711306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322462110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2a801274aa49fbad20daae57a26ed5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  planetRenderer: {fileID: 1359895651}
+  grayscaleMaterial: {fileID: 2100000, guid: e287b38ab43e4063bb875d7fd0965b1b, type: 2}
+--- !u!114 &2087711307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322462110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2a801274aa49fbad20daae57a26ed5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  planetRenderer: {fileID: 1440440401}
+  grayscaleMaterial: {fileID: 2100000, guid: eb8af8b0c1104470b1d4d77b9ed762c3, type: 2}
+--- !u!114 &2087711308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322462110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2a801274aa49fbad20daae57a26ed5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  planetRenderer: {fileID: 1959547408}
+  grayscaleMaterial: {fileID: 2100000, guid: 2d04c9fb3e1b4077be598f11fce4744c, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
