@@ -6,11 +6,13 @@ public class UpgradeShield : MonoBehaviour
     public TMP_Text shieldCost;
     public TMP_Text shieldAmount;
 
-    public float cost;
-    public float amount;
+    public static float cost;
+    public static float amount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        amount = 1f;
+        cost = 100f;
         shieldCost.text = "Cost: " + cost;
         shieldAmount.text = amount + "/s Shield";
     }
@@ -18,7 +20,11 @@ public class UpgradeShield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("t"))
+        {
+            //shield = 50f;
+            SellButton.coins += 1000;
+        }
     }
 
     public void Upgrade()
@@ -27,7 +33,7 @@ public class UpgradeShield : MonoBehaviour
         {
             SellButton.coins -= cost;
             cost += 125f;
-            amount += 1f;
+            amount += .3f;
         }
         shieldCost.text = "Cost: " + cost;
         shieldAmount.text = amount + "/s Shield";

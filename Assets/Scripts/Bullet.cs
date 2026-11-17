@@ -29,6 +29,11 @@ public class Bullet : MonoBehaviour
             }
         }
         transform.LookAt(target.transform.position);
+
+        if (Vector3.Distance(target.transform.position, transform.position) > 20f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

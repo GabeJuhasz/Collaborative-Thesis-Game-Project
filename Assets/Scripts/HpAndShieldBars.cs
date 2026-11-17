@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering;
 
 public class HpAndShieldBars : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class HpAndShieldBars : MonoBehaviour
     public float slider;
 
     public Material myMaterial;
+
+    public static float regen;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,11 +35,25 @@ public class HpAndShieldBars : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hpText.text = "HP: " + hp + "/" + maxHp;
-        shieldText.text = "Shield: " + shield + "/" + maxShiled;
+        hpText.text = "HP: " + hp.ToString("F2") + "/" + maxHp;
+        shieldText.text = "Shield: " + shield.ToString("F2") + "/" + maxShiled;
         //hpBar.offsetMax = new Vector2(hp/maxHp, hpBar.offsetMax.y);
         SetAlpha(shield/200);
         hpBar.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, slider/maxHp);
+        if (shield < maxShiled)
+        {
+            shield += UpgradeShield.amount * Time.deltaTime;
+            if (shield > maxShiled)
+            {
+                shield = maxShiled;
+            }
+        }
+
+        if (Input.GetKeyDown("t"))
+        {
+            shield = 50f;
+            SellButton.coins += 1000;
+        }
 
     }
 

@@ -7,6 +7,8 @@ public class EnemySpawner : MonoBehaviour
 
     public float damage;
 
+    public float hp;
+
     public float spawnSpeed;
     public float progress;
 
@@ -65,10 +67,14 @@ public class EnemySpawner : MonoBehaviour
             if (numEnemies < spawnLimit)
             {
                 Vector3 spawnPosition = transform.position;
+                spawnPosition.x = spawnPosition.x + Random.Range(-6,12);
+                spawnPosition.y = spawnPosition.y + Random.Range(1,12);
+                spawnPosition.z = spawnPosition.z + Random.Range(-6,12);
                 GameObject newEnemy = Instantiate(enemy, spawnPosition, Quaternion.identity);
                 newEnemy.GetComponent<EnemyStats>().spawner = this;
                 newEnemy.GetComponent<EnemyAI>().spawner = this;
                 newEnemy.GetComponent<EnemyStats>().damage = damage;
+                 newEnemy.GetComponent<EnemyStats>().hp = hp;
                 numEnemies++;
             }
         }

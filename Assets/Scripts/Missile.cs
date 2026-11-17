@@ -28,7 +28,12 @@ public class Missile : MonoBehaviour
             if (Vector3.Distance(enemies[i].transform.position, transform.position) < Vector3.Distance(target.transform.position, transform.position))
             {
                  target = enemies[i];
-            }
+            }     
+        }
+
+        if (Vector3.Distance(target.transform.position, transform.position) > 20f)
+        {
+            Destroy(gameObject);
         }
 
         //print(target.name);
