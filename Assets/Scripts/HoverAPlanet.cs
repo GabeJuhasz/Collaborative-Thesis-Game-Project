@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,7 +9,11 @@ public class HoverAPlanet : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Vector3 save = new Vector3();
+        save = transform.position;
         transform.SetParent(GameObject.Find("Planet Selection UI").transform);
+        transform.position = save;
+        
     }
 
     // Update is called once per frame
