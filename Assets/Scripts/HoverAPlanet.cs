@@ -8,7 +8,7 @@ public class HoverAPlanet : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        transform.SetParent(GameObject.Find("Planet Selection UI").transform);
     }
 
     // Update is called once per frame
@@ -19,6 +19,7 @@ public class HoverAPlanet : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        print("entered: " + planetNumber);
         if (!orbit.going)
         {
             if (planetNumber == 1)

@@ -1,5 +1,5 @@
 using UnityEngine;
-//using TMPro;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -25,7 +25,16 @@ public class EnemySpawner : MonoBehaviour
     public GameObject floorZone;
     public GameObject floorZoneDone;
 
+    public MissionMarkerHUD missionMarker;
+
+    public TMP_Text missionNumText;
+
     public bool tower;
+
+    public float towerNum;
+    public static float missionNum;
+
+    public bool dead;
 
     //public TMP_Text inOut;
 
@@ -34,6 +43,14 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        missionMarker = GameObject.FindAnyObjectByType<MissionMarkerHUD>();
+        missionNum = 1;
+
+        if (tower)
+        {
+            missionNumText = GameObject.Find("Mission Tower Num").GetComponent<TMP_Text>();
+        }
+        
     }
 
     // Update is called once per frame
@@ -48,6 +65,117 @@ public class EnemySpawner : MonoBehaviour
             progress = 0f;
             SpawnEnemeies();
         }
+
+        if (Input.GetKeyDown("k"))
+        {
+            print(missionNum);
+        }
+
+        if (tower)
+        {
+            if (tower && enemiesKilled >= maxEnemies && !dead)
+            {
+                dead = true;
+                floorZone.SetActive(false);
+                floorZoneDone.SetActive(true);
+
+                if (missionNum < 11)
+                {
+                    missionNum = towerNum + 1f;
+                }
+
+            }
+
+            missionNumText.text = "Destroy Tower " + missionNum;
+            if (missionNum == 1)
+            {
+                if (towerNum == 1)
+                {
+                    missionMarker.missionPoint = floorZone.gameObject.transform;
+                }
+            }
+
+            if (missionNum == 2)
+            {
+                if (towerNum == 2)
+                {
+                    missionMarker.missionPoint = floorZone.gameObject.transform;
+                }
+            }
+
+            if (missionNum == 3)
+            {
+                if (towerNum == 3)
+                {
+                    missionMarker.missionPoint = floorZone.gameObject.transform;
+                }
+            }
+
+            if (missionNum == 4)
+            {
+                if (towerNum == 4)
+                {
+                    missionMarker.missionPoint = floorZone.gameObject.transform;
+                }
+            }
+
+            if (missionNum == 5)
+            {
+                if (towerNum == 5)
+                {
+                    missionMarker.missionPoint = floorZone.gameObject.transform;
+                }
+            }
+
+            if (missionNum == 6)
+            {
+                if (towerNum == 6)
+                {
+                    missionMarker.missionPoint = floorZone.gameObject.transform;
+                }
+            }
+
+            if (missionNum == 7)
+            {
+                if (towerNum == 7)
+                {
+                    missionMarker.missionPoint = floorZone.gameObject.transform;
+                }
+            }
+
+            if (missionNum == 8)
+            {
+                if (towerNum == 8)
+                {
+                    missionMarker.missionPoint = floorZone.gameObject.transform;
+                }
+            }
+
+            if (missionNum == 9)
+            {
+                if (towerNum == 9)
+                {
+                    missionMarker.missionPoint = floorZone.gameObject.transform;
+                }
+            }
+
+            if (missionNum == 10)
+            {
+                if (towerNum == 10)
+                {
+                    missionMarker.missionPoint = floorZone.gameObject.transform;
+                }
+            }
+
+            if (missionNum == 11)
+            {
+                if (towerNum == 11)
+                {
+                    missionMarker.missionPoint = floorZone.gameObject.transform;
+                }
+            }
+        }
+        
     }
 
     public void SpawnEnemeies()
@@ -81,11 +209,17 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        if (tower && enemiesKilled >= maxEnemies)
-        {
-            floorZone.SetActive(false);
-            floorZoneDone.SetActive(true);
-        }
+       // if (tower && enemiesKilled >= maxEnemies)
+       // {
+          //  floorZone.SetActive(false);
+          //  floorZoneDone.SetActive(true);
+
+           // if(missionNum < 11)
+           // {
+           //     missionNum = towerNum + 1f;
+           // }
+            
+        //}
         
 
     }
