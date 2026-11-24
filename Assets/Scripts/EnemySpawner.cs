@@ -29,6 +29,8 @@ public class EnemySpawner : MonoBehaviour
 
     public TMP_Text missionNumText;
 
+    public ObjectiveCheck objective;
+
     public bool tower;
 
     public float towerNum;
@@ -49,6 +51,7 @@ public class EnemySpawner : MonoBehaviour
         if (tower)
         {
             missionNumText = GameObject.Find("Mission Tower Num").GetComponent<TMP_Text>();
+            //objective = GameObject.FindAnyObjectByType<ObjectiveCheck>().GetComponent<ObjectiveCheck>();
         }
         
     }
@@ -82,6 +85,7 @@ public class EnemySpawner : MonoBehaviour
                 if (missionNum < 11)
                 {
                     missionNum = towerNum + 1f;
+                    ObjectiveCheck.towersBroken++;
                 }
 
             }

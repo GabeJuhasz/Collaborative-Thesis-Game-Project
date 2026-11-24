@@ -10,8 +10,8 @@ public class ObjectiveCheck : MonoBehaviour
     public float towersToBreak;
     public float peopleToRescue;
 
-    public float towersBroken;
-    public float peopleRescued;
+    public static float towersBroken;
+    public static float peopleRescued;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
