@@ -11,6 +11,12 @@ public class ShipCompass : MonoBehaviour
     private string[] directions =
         { "N", "NE", "E", "SE", "S", "SW", "W", "NW" };
 
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").transform;
+        compassText = this.gameObject.GetComponent<TMP_Text>();
+    }
+
     void LateUpdate()
     {
         if (player == null || compassText == null)
