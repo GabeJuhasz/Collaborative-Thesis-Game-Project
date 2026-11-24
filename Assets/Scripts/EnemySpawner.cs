@@ -25,6 +25,8 @@ public class EnemySpawner : MonoBehaviour
     public GameObject floorZone;
     public GameObject floorZoneDone;
 
+    public bool tower;
+
     //public TMP_Text inOut;
 
     public GameObject player;
@@ -79,7 +81,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        if (enemiesKilled >= maxEnemies)
+        if (tower && enemiesKilled >= maxEnemies)
         {
             floorZone.SetActive(false);
             floorZoneDone.SetActive(true);
