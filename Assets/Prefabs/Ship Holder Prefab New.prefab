@@ -13795,6 +13795,7 @@ GameObject:
   - component: {fileID: 3659617321418257909}
   - component: {fileID: 8409808397221326549}
   - component: {fileID: 6906874178621623467}
+  - component: {fileID: 3756275391725853824}
   m_Layer: 0
   m_Name: Ship Holder Prefab New
   m_TagString: Untagged
@@ -13862,6 +13863,18 @@ MonoBehaviour:
   slot5: {fileID: 4720028827674340134}
   slot6: {fileID: 5207992825759808276}
   hasPrefabMod: 0
+--- !u!114 &3756275391725853824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7623625077739806000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d070f04714cbfd840ad05aa4615d254c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8953746430764768875
 GameObject:
   m_ObjectHideFlags: 0

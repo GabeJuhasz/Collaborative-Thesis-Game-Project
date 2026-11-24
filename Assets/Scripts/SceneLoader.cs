@@ -25,4 +25,10 @@ public class SceneLoader : MonoBehaviour
         print("back");
         SceneManager.LoadScene("Inventory");
     }
+
+    public void BackToLevel()
+    {
+        SceneManager.LoadScene(LevelTracker.level);
+    }
+
 }

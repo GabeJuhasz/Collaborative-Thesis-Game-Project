@@ -714,8 +714,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldCost: {fileID: 1257910750}
   shieldAmount: {fileID: 1632069414}
-  cost: 100
-  amount: 1
 --- !u!1 &94595245 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4284666096888451704, guid: ddcf901f84dc31c4f98f3b27a063db9a, type: 3}
@@ -2592,7 +2590,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 976219716}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: GoToLevel
+        m_MethodName: BackToLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
